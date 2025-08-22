@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Academic Compass",
+    "description": "AI-powered career path analysis for students based on their major and interests. (AI 驱动的专业与职业路径分析工具)",
+    "version": "1.0",
+    "permissions": [
+      "storage",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "https://academic-compass-backend-885033581194.us-central1.run.app/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["content.css"],
+        "run_at": "document_start"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["sidebar.html", "sidebar.css", "sidebar.js", "lib/*"],
+        "matches": [ "<all_urls>" ]
+      }
+    ],
+    "action": {
+      "default_title": "Academic Compass (学术罗盘)"
+    },
+    "icons": {
+      "16": "icons/16x16.png",
+      "48": "icons/48x48.png",
+      "128": "icons/128x128.png"
+    }
+}
